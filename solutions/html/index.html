@@ -1,96 +1,673 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer src="/_vercel/insights/script.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    />
-    <title>Vercel HTML Starter</title>
-    <meta
-      name="description"
-      content="High-performance HTML based website template."
-    />
-  </head>
-  <body>
-    <h1>Vercel HTML Starter</h1>
-    <p>
-      This template is a simple, but powerful single
-      <code>index.html</code> file deployed to
-      <a href="https://vercel.com">Vercel</a>. When your site is deployed, all
-      static assets (like HTML, JavaScript, CSS, images, and more) are deployed
-      globally to every
-      <a href="https://vercel.com/docs/concepts/edge-network/overview"
-        >Vercel Edge Network</a
-      >
-      region.
-    </p>
-    <h2>Simple, privacy-friendly analytics</h2>
-    <p>
-      Want to understand your visitor traffic? Vercel Analytics gives you
-      first-party, privacy-friendly traffic analytics for your HTML site. This
-      template is already configured using the following script:
-    </p>
-    <pre><code>&lt;script defer src="/_vercel/insights/script.js"&gt;&lt;/script&gt;</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/analytics">Vercel Analytics</a>.
-    </p>
-    <h2>Integrated with git</h2>
-    <p>
-      Deploying updates to your site is as simple as
-      <code>git push</code> thanks to Vercel's advanced
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-      Support for GitHub, GitLab, Bitbucket is zero-configuration, and with the
-      flexible Vercel CLI and API, you can integrate with any tool possible.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-    </p>
-    <h2>Fast <code>gzip</code> compression</h2>
-    <p>
-      To help ensure the smallest possible file sizes for your static assets,
-      the Vercel Edge Network compresses files by default using
-      <code>gzip</code>. You can also optionally use
-      <code>brotli</code> compressesion if you prefer.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/edge-network/compression"
-        >compression</a
-      >.
-    </p>
-    <h2>Advanced routing configuration</h2>
-    <p>
-      Vercel gives you a variety of ways to configure the routing of your
-      website. For example, adding redirects, rewrites, or headers to your page.
-      While you can use <code>vercel.json</code> to define these through JSON,
-      you can also express your routing configuration as code using
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-    <p>
-      Middleware runs before the
-      <a href="https://vercel.com/docs/concepts/edge-network/caching"
-        >Vercel Edge Network Cache</a
-      >, so you can configure routing exactly as your application needs. For
-      example, this template uses <code>middleware.js</code> defined in the root
-      of the repository to add additional security headers to the site:
-    </p>
-    <pre><code>referrer-policy: origin-when-cross-origin
-strict-transport-security: max-age=31536000; includeSubDomains; preload
-x-content-type-options: nosniff
-x-dns-prefetch-control: on
-x-frame-options: DENY</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-  </body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Header</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header styles */
+        .header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo styles */
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .logo svg {
+            width: 32px;
+            height: 32px;
+            margin-right: 0.5rem;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Navigation styles */
+        .nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style-type: none;
+        }
+
+        .nav-item {
+            margin-left: 1.5rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #007bff;
+        }
+
+        /* Button styles */
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-login {
+            color: #007bff;
+            border: 1px solid #007bff;
+            margin-left: 1rem;
+        }
+
+        .btn-login:hover {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        .btn-register {
+            background-color: #007bff;
+            color: #ffffff;
+            margin-left: 1rem;
+        }
+
+        .btn-register:hover {
+            background-color: #0056b3;
+        }
+
+        /* Mobile menu button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .nav-list {
+                display: none;
+            }
+
+            .btn {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            /* Mobile menu styles */
+            .mobile-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #ffffff;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .mobile-menu.active {
+                display: block;
+            }
+
+            .mobile-nav-list {
+                list-style-type: none;
+                padding: 1rem;
+            }
+
+            .mobile-nav-item {
+                margin-bottom: 1rem;
+            }
+
+            .mobile-nav-link {
+                text-decoration: none;
+                color: #333;
+                font-weight: 500;
+                display: block;
+                padding: 0.5rem 0;
+            }
+
+            .mobile-btn {
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin-top: 1rem;
+            }
+        }
+
+        .banner {
+            background-color: #f8f9fa;
+            padding: 4rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .banner-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .banner-title {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .banner-description {
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .banner-cta {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: #007bff;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .banner-cta:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .banner {
+                padding: 3rem 1rem;
+            }
+
+            .banner-title {
+                font-size: 2rem;
+            }
+
+            .banner-description {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .banner {
+                padding: 2rem 1rem;
+            }
+
+            .banner-title {
+                font-size: 1.75rem;
+            }
+
+            .banner-description {
+                font-size: 0.875rem;
+            }
+
+            .banner-cta {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+            }
+        }
+
+        .features {
+            padding: 4rem 1rem;
+            background-color: #ffffff;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-title {
+            font-size: 2rem;
+            color: #333;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .features-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .feature-card {
+            flex-basis: calc(33.333% - 2rem);
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-description {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .features {
+                padding: 3rem 1rem;
+            }
+
+            .feature-card {
+                flex-basis: calc(50% - 2rem);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .features {
+                padding: 2rem 1rem;
+            }
+
+            .features-title {
+                font-size: 1.75rem;
+            }
+
+            .feature-card {
+                flex-basis: 100%;
+            }
+        }
+
+        .how-it-works {
+            padding: 4rem 1rem;
+            background-color: #f8f9fa;
+        }
+
+        .how-it-works-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .how-it-works-title {
+            font-size: 2rem;
+            color: #333;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .step {
+            flex-basis: calc(25% - 2rem);
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #007bff;
+            color: #ffffff;
+            border-radius: 50%;
+            font-size: 1.25rem;
+            font-weight: bold;
+            line-height: 40px;
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-size: 1.25rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-description {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: -1rem;
+            width: 2rem;
+            height: 2px;
+            background-color: #007bff;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .step {
+                flex-basis: calc(50% - 2rem);
+                margin-bottom: 2rem;
+            }
+
+            .step:nth-child(2)::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .how-it-works {
+                padding: 3rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .how-it-works {
+                padding: 2rem 1rem;
+            }
+
+            .how-it-works-title {
+                font-size: 1.75rem;
+            }
+
+            .step {
+                flex-basis: 100%;
+            }
+
+            .step::after {
+                display: none;
+            }
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 3rem 1rem;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-section {
+            flex-basis: calc(25% - 2rem);
+            margin-bottom: 2rem;
+        }
+
+        .footer-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #007bff;
+        }
+
+        .footer-links {
+            list-style-type: none;
+        }
+
+        .footer-link {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-link a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link a:hover {
+            color: #007bff;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            font-size: 1.5rem;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: #007bff;
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .footer-section {
+                flex-basis: calc(50% - 2rem);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-section {
+                flex-basis: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                </svg>
+                <span class="logo-text">BrandName</span>
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+                </ul>
+                <a href="#" class="btn btn-login">Login</a>
+                <a href="#" class="btn btn-register">Register</a>
+            </nav>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+
+    </header>
+
+    <div class="banner">
+        <div class="banner-container">
+            <h1 class="banner-title">Welcome to Our Amazing Platform</h1>
+            <p class="banner-description">Discover a world of possibilities with our cutting-edge solutions. Streamline
+                your workflow, boost productivity, and achieve your goals faster than ever before.</p>
+            <a href="#" class="banner-cta">Get Started</a>
+        </div>
+    </div>
+
+    <section class="features">
+        <div class="features-container">
+            <h2 class="features-title">Our Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">&#128200;</div>
+                    <h3 class="feature-title">Advanced Analytics</h3>
+                    <p class="feature-description">Gain valuable insights with our powerful analytics tools. Make
+                        data-driven decisions to grow your business.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128273;</div>
+                    <h3 class="feature-title">Secure Platform</h3>
+                    <p class="feature-description">Your data is safe with us. We use state-of-the-art security measures
+                        to protect your information.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128241;</div>
+                    <h3 class="feature-title">Mobile Friendly</h3>
+                    <p class="feature-description">Access your account anytime, anywhere. Our platform is fully
+                        optimized for mobile devices.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128172;</div>
+                    <h3 class="feature-title">24/7 Support</h3>
+                    <p class="feature-description">Our dedicated support team is always ready to assist you with any
+                        questions or issues.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128640;</div>
+                    <h3 class="feature-title">Fast Performance</h3>
+                    <p class="feature-description">Experience lightning-fast load times and smooth interactions across
+                        our entire platform.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#128295;</div>
+                    <h3 class="feature-title">Customizable Tools</h3>
+                    <p class="feature-description">Tailor our tools to fit your specific needs. Create a workspace that
+                        works for you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="how-it-works-container">
+            <h2 class="how-it-works-title">How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Sign Up</h3>
+                    <p class="step-description">Create your account in just a few clicks and set up your profile.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Customize</h3>
+                    <p class="step-description">Tailor the platform to your needs by selecting your preferences and
+                        goals.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Explore</h3>
+                    <p class="step-description">Discover our range of tools and features designed to boost your
+                        productivity.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Succeed</h3>
+                    <p class="step-description">Achieve your goals faster with our streamlined, user-friendly platform.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3 class="footer-title">About Us</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="#">Our Story</a></li>
+                    <li class="footer-link"><a href="#">Team</a></li>
+                    <li class="footer-link"><a href="#">Careers</a></li>
+                    <li class="footer-link"><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Products</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="#">Features</a></li>
+                    <li class="footer-link"><a href="#">Pricing</a></li>
+                    <li class="footer-link"><a href="#">Integrations</a></li>
+                    <li class="footer-link"><a href="#">API</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Resources</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="#">Documentation</a></li>
+                    <li class="footer-link"><a href="#">Blog</a></li>
+                    <li class="footer-link"><a href="#">Support</a></li>
+                    <li class="footer-link"><a href="#">Community</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Connect</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon" aria-label="Facebook">&#xf39e;</a>
+                    <a href="#" class="social-icon" aria-label="Twitter">&#xf099;</a>
+                    <a href="#" class="social-icon" aria-label="LinkedIn">&#xf0e1;</a>
+                    <a href="#" class="social-icon" aria-label="Instagram">&#xf16d;</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Your Company Name. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function () {
+            document.querySelector('.mobile-menu').classList.toggle('active');
+        });
+    </script>
+</body>
+
 </html>
